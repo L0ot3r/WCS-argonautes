@@ -5,9 +5,13 @@ import { useRouter } from 'next/router'
 import { MdDeleteForever } from 'react-icons/md';
 import { client } from '../../utils/lib/client';
 
+import { useStateContext } from '../../context/StateContext';
+
 
 const Feed = ({ members }) => {
 	const router = useRouter()
+	const { membersList } = useStateContext()
+
 
 	const deleteMember = async (id) => {
 		await client.delete(id);
@@ -18,7 +22,7 @@ const Feed = ({ members }) => {
 		<div className={styles.feedContainer}>
 			<h2>Membres de l&apos;équipage</h2>
 			<ul>
-				{members.map((member) => (
+				{membersList.map((member) => (
 					<li className={styles.list} key={member._id}>
 						<div className={styles.card}>
 							<h4>{member.name}</h4>

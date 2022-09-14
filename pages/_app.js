@@ -9,7 +9,8 @@ function MyApp({ Component, pageProps }) {
 		setIsSSR(false);
 	}, []);
 
-  if(isSSR) return null
+  if(isSSR) return null;
+  
   return (
     <StateContext>
       <Component {...pageProps} />

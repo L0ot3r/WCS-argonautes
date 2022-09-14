@@ -1,21 +1,22 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import styles from './Form.module.css';
 
-const Form = () => {
-	const [newMember, setNewMember] = useState('');
+import { useStateContext } from '../../context/StateContext';
 
-	const addMember = async (member) => {
-		const document = {
-			_type: 'members',
-			name: newMember,
-		};
-		if (newMember && newMember !== '') {
-			await axios.post('http://localhost:3000/api/member', document);
-		} else {
-			return;
-		}
-	};
+const Form = () => {
+	const { newMember, setNewMember, addMember } = useStateContext()
+
+	// const addMember = async (member) => {
+	// 	const document = {
+	// 		_type: 'members',
+	// 		name: newMember,
+	// 	};
+	// 	if (newMember && newMember !== '') {
+	// 		await client.create(document);
+	// 	} else {
+	// 		return;
+	// 	}
+	// };
 
 	return (
 		<div className={styles.formContainer}>

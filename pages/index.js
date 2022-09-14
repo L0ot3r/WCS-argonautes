@@ -1,8 +1,17 @@
-import React from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+
 import { Header, Form, Feed, Footer } from '../components';
+import { client } from '../utils/lib/client';
+import { useStateContext } from '../context/StateContext';
 
 const Home = ({ members }) => {
+	const { membersList, setMembersList } = useStateContext()
+
+	useEffect(() => {
+		setMembersList(members)
+	}, [members, setMembersList])
+
+	console.log(membersList);
 
 	return (
 		<>
@@ -10,7 +19,7 @@ const Home = ({ members }) => {
 			<div className='main-container'>
 				<Form />
 				<Feed 
-					members={members} 
+					members={membersList} 
 				/>
 			</div>
 			<Footer />
@@ -19,7 +28,8 @@ const Home = ({ members }) => {
 };
 
 export const getServerSideProps = async () => {
-	const { data } = await axios.get('http://localhost:3000/api/member')
+	const query = `*[_type == 'members']`
+	const data = await client.fetch(query)
 	return {
 		props: {
 			members: data,
