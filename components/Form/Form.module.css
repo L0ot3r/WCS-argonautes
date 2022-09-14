@@ -1,0 +1,40 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+.form label {
+  padding: 0 10px;
+  font-size: 1.5rem;
+}
+.inputContainer button {
+  padding: 11px;
+  border: none;
+  background: #2d78e9;
+  color: #f1f1f1;
+  font-weight: 600;
+  border-radius: 0 8px 8px 0;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.inputContainer button:active {
+  background: #146aec;
+
+}
+
+.inputContainer input {
+  outline: none;
+  border: 1px solid #2d78e9;
+  border-radius: 8px 0 0 8px;
+  padding: 10px;
+  font-size: 1.2rem;
+}

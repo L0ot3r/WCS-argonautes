@@ -1,0 +1,25 @@
+.footer {
+  /* position: absolute;
+  bottom: 0; */
+  width: 100%;
+  background: #f76c6c;
+  color: #f1f1f1;
+  font-weight: 600;
+  font-size: 20px;
+  text-align: center;
+  padding: 2.5rem 0;
+}
+
+.footer p {
+  height: auto;
+}
+.footer span {
+  height: 60px;
+  line-height: 30px;
+}
+.footer a {
+  text-decoration: none;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  margin-left: 0.5rem;
+}
