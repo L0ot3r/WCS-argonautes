@@ -12,11 +12,11 @@ const Feed = ({ members }) => {
 	const router = useRouter()
 	const { membersList } = useStateContext()
 
-
 	const deleteMember = async (id) => {
 		await client.delete(id);
 		router.reload()
 	};
+
 	
 	return (
 		<div className={styles.feedContainer}>
