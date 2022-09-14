@@ -1,13 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { Header, Form, Feed, Footer } from '../components';
 
 const Home = ({ members }) => {
-	const [membersArr, setMembersArr] = useState([])
-
-	useEffect(() => {
-		setMembersArr(members)
-	}, [members])
 
 	return (
 		<>
@@ -15,7 +10,7 @@ const Home = ({ members }) => {
 			<div className='main-container'>
 				<Form />
 				<Feed 
-					members={membersArr} 
+					members={members} 
 				/>
 			</div>
 			<Footer />

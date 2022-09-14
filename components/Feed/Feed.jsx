@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Feed.module.css';
 import { useRouter } from 'next/router'
 
@@ -8,6 +8,11 @@ import { client } from '../../utils/lib/client';
 
 const Feed = ({ members }) => {
 	const router = useRouter()
+	const [membersArr, setMembersArr] = useState([])
+
+	useEffect(() => {
+		setMembersArr(members)
+	}, [members])
 
 	const deleteMember = async (id) => {
 		await client.delete(id);
@@ -18,7 +23,7 @@ const Feed = ({ members }) => {
 		<div className={styles.feedContainer}>
 			<h2>Membres de l&apos;équipage</h2>
 			<ul>
-				{members.map((member) => (
+				{membersArr.map((member) => (
 					<li className={styles.list} key={member._id}>
 						<div className={styles.card}>
 							<h4>{member.name}</h4>
