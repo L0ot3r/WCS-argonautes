@@ -20,10 +20,10 @@ export const StateContext = ({ children }) => {
 			await client.create(document);
 			const updatedMembers = await client.fetch(query)
 			setMembersList(updatedMembers)
+			router.reload()
 		} else {
 			return;
 		}
-		router.reload()
 	};
 
 	return (
