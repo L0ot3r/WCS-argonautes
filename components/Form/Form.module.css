@@ -38,3 +38,12 @@
   padding: 10px;
   font-size: 1.2rem;
 }
+
+.sourceCode {
+  font-size: 1.2rem;
+  color: green;
+}
+.sourceCode a {
+  color: #2d78e9;
+  font-weight: 600;
+}
