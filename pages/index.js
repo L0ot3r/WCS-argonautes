@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
 
 import { Header, Form, Feed, Footer } from '../components';
 
 import { useStateContext } from '../context/StateContext';
+import { client } from '../utils/lib/client';
 
 const Home = ({ members }) => {
 	const { membersList, setMembersList } = useStateContext()
@@ -25,7 +25,8 @@ const Home = ({ members }) => {
 };
 
 export const getServerSideProps = async () => {
-	const { data } = await axios.get('https://wcs-argonautes.vercel.app/api/member')
+	const query = `*[_type == 'members']`
+	const data = await client.fetch(query)
 
 	return {
 		props: {

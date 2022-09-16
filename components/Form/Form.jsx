@@ -1,11 +1,9 @@
 import React from 'react';
 import styles from './Form.module.css';
-import { useRouter } from 'next/router';
 
 import { useStateContext } from '../../context/StateContext';
 
 const Form = () => {
-	const router = useRouter()
 	const { newMember, setNewMember, addMember } = useStateContext()
 
 	return (
