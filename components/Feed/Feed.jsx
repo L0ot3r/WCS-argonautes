@@ -8,7 +8,7 @@ import { client } from '../../utils/lib/client';
 import { useStateContext } from '../../context/StateContext';
 
 
-const Feed = ({ members }) => {
+const Feed = () => {
 	const router = useRouter()
 	const { membersList } = useStateContext()
 
@@ -17,7 +17,6 @@ const Feed = ({ members }) => {
 		router.reload()
 	};
 
-	
 	return (
 		<div className={styles.feedContainer}>
 			<h2>Membres de l&apos;équipage</h2>

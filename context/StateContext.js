@@ -1,14 +1,18 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { client } from '../utils/lib/client';
-import { useRouter } from 'next/router';
+import axios from 'axios';
 
 
 const Context = createContext();
 
 export const StateContext = ({ children }) => {
-	const router = useRouter()
 	const [membersList, setMembersList] = useState([]);
 	const [newMember, setNewMember] = useState('');
+
+	const getAllMembers = async () => {
+		const updatedMembers = await axios.get('http://localhost:3000/api/member')
+		setMembersList(updatedMembers)
+		console.log(membersList);
+	}
 
 	const addMember = async (member) => {
 		const document = {
@@ -16,15 +20,12 @@ export const StateContext = ({ children }) => {
 			name: newMember,
 		};
 		if (newMember && newMember !== '') {
-			const query = `*[_type == 'members']`
-			await client.create(document);
-			const updatedMembers = await client.fetch(query)
-			setMembersList(updatedMembers)
-			router.reload()
-		} else {
-			return;
+			await axios.post('http://localhost:3000/api/member', document);
 		}
+		getAllMembers()
 	};
+
+
 
 	return (
 		<Context.Provider
@@ -34,6 +35,7 @@ export const StateContext = ({ children }) => {
 				addMember,
 				newMember,
 				setNewMember,
+				getAllMembers,
 			}}
 		>
 			{children}

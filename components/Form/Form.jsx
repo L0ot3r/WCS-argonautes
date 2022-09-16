@@ -1,27 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './Form.module.css';
+import { useRouter } from 'next/router';
 
 import { useStateContext } from '../../context/StateContext';
 
 const Form = () => {
+	const router = useRouter()
 	const { newMember, setNewMember, addMember } = useStateContext()
-
-	// const addMember = async (member) => {
-	// 	const document = {
-	// 		_type: 'members',
-	// 		name: newMember,
-	// 	};
-	// 	if (newMember && newMember !== '') {
-	// 		await client.create(document);
-	// 	} else {
-	// 		return;
-	// 	}
-	// };
 
 	return (
 		<div className={styles.formContainer}>
 			<h2>Ajouter un(e) Argonaute</h2>
-			<form className={styles.form}
+			<form 
+				className={styles.form}
 				onSubmit={() => addMember(newMember)}
 			>
 				<label htmlFor='argonautes'>Nom de l&apos;Argonautes</label>
