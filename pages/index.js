@@ -25,8 +25,8 @@ const Home = ({ members }) => {
 };
 
 export const getServerSideProps = async () => {
-	const { data } = await axios.get('http://localhost:3000/api/member')
-	
+	const { data } = await axios.get('https://wcs-argonautes.vercel.app/api/member')
+
 	return {
 		props: {
 			members: data,
